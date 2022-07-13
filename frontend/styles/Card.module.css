@@ -1,0 +1,53 @@
+.Card {
+  margin-left: 0.4em;
+  width: 25rem;
+  height: 34rem;
+  margin-bottom: 5em;
+  margin-left: 4.5em;
+  border-style: solid;
+  border-radius: 2rem;
+
+  border-width: 1px;
+}
+
+.BuyButton {
+  margin-top: 5.5rem;
+  margin-left: 14rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  height: 4rem;
+  width: 9rem;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 1px 1px 0px 2px rgba (0, 0, 0, 0.3);
+  background: var(--GreenColor);
+  cursor: pointer;
+}
+
+.BuyButton:hover {
+  animation: mymove 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes mymove {
+  0% {
+  }
+  100% {
+    background-color: black;
+    color: wheat;
+    font-size: 1.8rem;
+  }
+}
+
+.cardTitle {
+  margin-left: 1rem;
+  font-weight: 700;
+}
+.cardPrice {
+  color: rgb(32, 117, 3);
+  margin-left: 2rem;
+  font-weight: 100;
+}
+.infoContainer {
+  height: 20rem;
+  width: 24rem;
+}

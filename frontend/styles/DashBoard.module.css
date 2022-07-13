@@ -1,0 +1,49 @@
+.Homepage {
+  background-color: white;
+}
+.card {
+  width: 85%;
+  margin-left: 20rem;
+  margin-top: 1rem;
+  border-radius: 5em;
+  overflow: auto;
+  max-height: 83vh;
+}
+.card::-webkit-scrollbar {
+  width: 8px;
+}
+.card::-webkit-scrollbar-track {
+  background: rgb(238, 233, 233);
+  border-radius: 5rem;
+  margin-top: 32px;
+  margin-bottom: 130px;
+}
+.card::-webkit-scrollbar-thumb {
+  background: var(--GreenColor);
+  border-radius: 5rem;
+}
+.category {
+  margin-left: 1rem;
+  height: 60rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.searchTerm {
+  width: 100%;
+  border-radius: 30px;
+  font-size: x-large;
+  padding: 18px;
+  height: 20px;
+  color: var(--GreenColor);
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+  margin-top: 2rem;
+  margin-left: 25rem;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+}

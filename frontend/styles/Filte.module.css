@@ -1,0 +1,52 @@
+.filter {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  border-radius: 4rem;
+  width: 18rem;
+  height: 60rem;
+
+  position: absolute;
+}
+.category {
+  margin-top: 3rem;
+  font-size: larger;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+.priceRange {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.searchTerm {
+  width: 38%;
+  margin-right: 1rem;
+  border-radius: 30px;
+  font-size: large;
+  padding: 12px;
+  color: var(--GreenColor);
+}
+
+.Share {
+  margin-top: 12rem;
+  border-radius: 3rem;
+  width: 18rem;
+  height: 18rem;
+  background-color: coral;
+  background-image: url("https://img.freepik.com/free-vector/hand-drawn-farmers-market-logo_23-2149329270.jpg");
+  background-size: cover;
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
+.bigText {
+  color: white;
+  font-weight: bold;
+
+  position: absolute;
+  top: 92%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}

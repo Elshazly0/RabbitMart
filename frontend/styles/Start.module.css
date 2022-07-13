@@ -1,0 +1,14 @@
+.card {
+  width: 84%;
+  height: 67rem;
+  margin-left: 22rem;
+  margin-top: 2rem;
+  border-radius: 2em;
+  background-color: rgb(239, 234, 226);
+  background-image: url("https://img.freepik.com/free-vector/hand-drawn-farmers-market-logo_23-2149329270.jpg");
+  background-position-y: center;
+  background-position-x: center;
+  background-size: contain;
+  background-color: #023512;
+  background-repeat: no-repeat;
+}

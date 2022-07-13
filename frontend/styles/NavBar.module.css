@@ -1,0 +1,37 @@
+.NavBar {
+  color: black;
+  display: flex;
+  height: 6em;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.logo {
+  margin-left: 2.5rem;
+  color: var(--GreenColor);
+  margin-top: 2rem;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.links {
+  color: black;
+
+  border-bottom: 1px solid #000;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+}
+.links:hover {
+  animation: mymove 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes mymove {
+  0% {
+    color: black;
+  }
+  100% {
+    color: var(--GreenColor);
+    font-size: 1.6rem;
+  }
+}
