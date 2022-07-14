@@ -35,8 +35,8 @@
   background-color: coral;
   background-image: url("https://img.freepik.com/free-vector/hand-drawn-farmers-market-logo_23-2149329270.jpg");
   background-size: cover;
-  filter: blur(3px);
-  -webkit-filter: blur(3px);
+
+  -webkit-filter: blur(2px);
 }
 .bigText {
   color: white;

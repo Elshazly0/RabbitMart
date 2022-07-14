@@ -16,12 +16,12 @@ a {
 :root {
   /*** Color ***/
   --YellowColor: #ffc600;
-  --GreenColor: #059405;
+  --GreenColor: #0c7b0c;
   --BlueColor: #5800ff;
   --BlackColor: #000000;
 
   /*** Fonts ***/
-  --body-font: "Poppins", sans-serif;
+  --body-font: "Sora", sans-serif;
   --h1-font-size: 1.5rem;
   --h2-font-size: 1.25rem;
   --normal-font-size: 1rem;

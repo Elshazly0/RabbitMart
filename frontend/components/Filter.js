@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from "react";
-import styles from "../styles/Filte.module.css";
+import styles from "../styles/Filter.module.css";
 import Image from 'next/image'
 import { loadGetInitialProps } from "next/dist/shared/lib/utils";
 

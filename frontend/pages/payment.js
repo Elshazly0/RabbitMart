@@ -1,20 +1,26 @@
-import React, { useState, useEffect } from "react";
-import { FormFeedback, Input, Label } from "reactstrap";
-import styles from "../styles/Home.module.css";
-import { Form, FormGroup, Button } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Input,
+  Label,
+  FormFeedback,
+} from "reactstrap";
+import { useState, useEffect } from "react";
+import styles from "../styles/payment.module.css";
 import axios from "axios";
 
-export default function payment() {
-  const [nameOnCard, setNameOnCard] = useState("");
-  const [cardNumber, setCardNumber] = useState("");
-  const [expirationDate, setExpirationDate] = useState("");
+export default function Register() {
   const [email, setEmail] = useState("");
-
-  const [nameOnCardState, setNameOnCardState] = useState("");
-  const [cardNumberState, setCardNumberState] = useState("");
-  const [expirationDateState, setExpirationDateState] = useState("");
+  const [CardNumber, setCardNumber] = useState("");
+  const [NameOnCard, setNameOnCard] = useState("");
+  const [emailState, setEmailState] = useState("");
+  const [CardNumberState, setCardNumberState] = useState("");
+  const [NameOnCardState, setNameOnCardState] = useState("");
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(0);
+  const [expirationDate, setExpirationDate] = useState("");
+
 
   useEffect(() => {
     // Perform localStorage action
@@ -22,192 +28,175 @@ export default function payment() {
     setQuantity(localStorage.getItem("quantity"));
   }, []);
 
+
+  const validateEmail = (value) => {
+    const emailRegex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    let emailState;
+    if (emailRegex.test(value)) {
+      emailState = "has-success";
+    } else {
+      emailState = "has-danger";
+    }
+    setEmailState(emailState);
+  };
+
+  const validateCardNumber = (value) => {
+    let CardNumberState;
+    if (value.length == 16) {
+      CardNumberState = "has-success";
+    } else {
+      CardNumberState = "has-danger";
+    }
+    setCardNumberState(CardNumberState);
+  };
+
+  const validateNameOnCard = (value) => {
+    let NameOnCardState;
+    if (value.length > 5) {
+      NameOnCardState = "has-success";
+    } else {
+      NameOnCardState = "has-danger";
+    }
+    setNameOnCardState(NameOnCardState);
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "nameONCard") {
-      setNameOnCard(value);
-      console.log(nameOnCard)
-
-    } else if (name === "cardNumber") {
-      setCardNumber(value);
-    } else if (name === "expirationDate") {
-      setExpirationDate(value);
-      console.log(expirationDate)
-
-    }
-    else if (name === "EmailAddress") {
+    if (name === "email") {
+      validateEmail(value);
       setEmail(value);
-      console.log(email)
+    } else if (name === "NameOnCard") {
+      validateNameOnCard(value);
+      setNameOnCard(value);
+    } else if (name === "CardNumber") {
+      validateCardNumber(value);
+      setCardNumber(value);
+    } else if (name === "ExpirationDate") {
+      setExpirationDate(value);
     }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    validateEmail(email);
+    validateCardNumber(CardNumber);
+    validateNameOnCard(NameOnCard);
 
-    setTimeout(() => {
-      axios.post(`http://localhost:3003/payment`).then((response) => {
-        const data = response.data["status"];
-        console.log(data);
-        console.log(product.id);
-        const order = {
-          id: product["id"],
-          price: product["price"],
-          quantity: quantity,
-          CardName: nameOnCard,
-          CardNumber: cardNumber,
-          ExpirationDate: expirationDate,
-        };
-        if (data == "succeeded") {
-          axios
-            .get(`http://localhost:3004/products/${product["id"]}`)
-            .then((responsee) => {
-              console.log(responsee.data);
-              if (responsee.data["stock"] > quantity) {
-                console.log("instock");
+    if (
+      emailState === "has-success" &&
+      CardNumberState === "has-success" &&
+      NameOnCardState === "has-success"
+    ) {
 
-                try {
-                  const rand = parseInt(0 + Math.random() * (100000000000 - 0));
-                  const shipment = {
-                    shipmentid: rand.toString(),
-                    id: product["id"],
-                    price: product["price"],
-                    quantity: quantity,
-                    CardName: nameOnCard,
-                    CardNumber: cardNumber,
-                    ExpirationDate: expirationDate,
-                    Email: email
-                  };
-                  axios
-                    .post(`http://localhost:3002`, shipment)
-                    .then((response) => {
-                      console.log(response.data);
-                      localStorage.setItem("orderid", shipment["shipmentid"]);
-                      window.location.replace("http://localhost:3000/shipment");
-                    });
-                } catch {
-                  console.log("rer");
-                }
-              } else {
-                console.log("out");
-              }
-            });
-        }
+
+      setTimeout(() => {
+        axios.post(`http://localhost:3003/payment`).then((response) => {
+          const data = response.data["status"]
+          if (data == "succeeded") {
+
+            try {
+              const rand = parseInt(0 + Math.random() * (100000000000 - 0));
+              const shipment = {
+                shipmentid: rand.toString(),
+                id: product["id"],
+                price: product["price"],
+                quantity: quantity,
+                CardName: NameOnCard,
+                CardNumber: CardNumber,
+                ExpirationDate: expirationDate,
+                Email: email
+              };
+              axios
+                .post(`http://localhost:3002`, shipment)
+                .then((response) => {
+                  console.log(response.data);
+                  localStorage.setItem("orderid", shipment["shipmentid"]);
+                  window.location.replace("http://localhost:3000/shipment");
+                });
+            } catch {
+              console.log("rer");
+            }
+          } else {
+            console.log("out");
+          }
+        });
+
+
       });
-    });
+    }
   };
 
   return (
-    <div className={styles.Appp}>
-      <Button
-        style={{
-          justifyContent: "right",
-          backgroundColor: "#f1f1f1",
-          color: "black",
-        }}
-        className="float-right"
-        onClick={() => {
-          window.location.replace("http://localhost:3000");
-        }}
-      >
-        {" "}
-        Previous Page{" "}
-      </Button>
-      <br></br>
-      <h2 style={{ textAlign: "center" }}>Online Payment</h2>
+    <div className={styles.App}>
+      <h2>Procced Your Payment</h2>
       <Form className={styles.form} onSubmit={handleSubmit}>
         <FormGroup>
-          <Label className={styles.label} for="nameOnCard">
-            {" "}
-            Name{" "}
+          <Label className={styles.label} for="email">
+            Email Address
           </Label>
+
           <Input
-            style={{
-              width: "100%",
-              padding: "12px 20px",
-              margin: "8px 0",
-            }}
             type="text"
-            name="nameONCard"
-            id="nameONCard"
-            placeholder="Enter your Name example John Doe"
+            name="email"
+            id="email"
+            placeholder="example@example.com"
             onChange={handleChange}
-            valid={nameOnCardState === "has-success"}
-            invalid={nameOnCardState === "has-danger"}
+            valid={emailState === "has-success"}
+            invalid={emailState === "has-danger"}
           />
-          <br></br>
-          <FormFeedback>Name must be valid</FormFeedback>
-          <br></br>
-          <Label className={styles.label} for="cardNumber">
-            {" "}
-            The Card Number{" "}
-          </Label>
-          <Input
-            style={{
-              width: "100%",
-              padding: "12px 20px",
-              margin: "8px 0",
-            }}
-            type="text"
-            name="cardNumber"
-            id="cardNumber"
-            placeholder="**** **** **** ****"
-            onChange={handleChange}
-            valid={cardNumberState === "has-success"}
-            invalid={cardNumberState === "has-danger"}
-          />
-          <br></br>
-          <FormFeedback>Number must be valid</FormFeedback>
-          <br></br>
-          <Label className={styles.label} for="expirationDate">
-            {" "}
-            Expiration Date{" "}
-          </Label>
-          <Input
-            style={{
-              width: "100%",
-              padding: "12px 20px",
-              margin: "8px 0",
-            }}
-            type="Date"
-            name="expirationDate"
-            id="expirationDate"
-            onChange={handleChange}
-            valid={expirationDateState === "has-success"}
-            invalid={expirationDateState === "has-danger"}
-          />
-          <Label className={styles.label} for="Email">
-            {" "}
-            Email Address{" "}
-          </Label>
-          <Input
-            style={{
-              width: "100%",
-              padding: "12px 20px",
-              margin: "8px 0",
-            }}
-            type="string"
-            name="EmailAddress"
-            id="Email"
-            onChange={handleChange}
-            placeholder="Enter Your Email Address"
-            valid={expirationDateState === "has-success"}
-            invalid={expirationDateState === "has-danger"}
-          />
-          <br></br>
-          <FormFeedback> Expiration Date must be valid </FormFeedback>
+          <FormFeedback>Please input a correct email.</FormFeedback>
         </FormGroup>
-        <br></br>
-        <Button
-          style={{
-            backgroundColor: "greenyellow",
-            width: "100px",
-            height: "50px",
-          }}
-        >
-          Submit
-        </Button>
+
+        <FormGroup>
+          <Label className={styles.label} for="NameOnCard">
+            Name On Card
+          </Label>
+          <Input
+            type="text"
+            name="NameOnCard"
+            id="NameOnCard"
+            placeholder="********"
+            onChange={handleChange}
+            valid={NameOnCardState === "has-success"}
+            invalid={NameOnCardState === "has-danger"}
+          />
+          <FormFeedback>Please Enter A Real Name</FormFeedback>
+        </FormGroup>
+        <FormGroup>
+          <Label className={styles.label} for="CardNumber">
+            Card Number
+          </Label>
+          <Input
+            type="CardNumber"
+            name="CardNumber"
+            id="CardNumber"
+            placeholder="1234-5678-****-****"
+            onChange={handleChange}
+            valid={CardNumberState === "has-success"}
+            invalid={CardNumberState === "has-danger"}
+          />
+          <FormFeedback>
+            CardNumber must be 16 characters long.
+          </FormFeedback>
+        </FormGroup>
+        <FormGroup>
+          <Label className={styles.label} for="ExpirationDate">
+            ExpirationDate
+          </Label>
+          <Input
+            type="date"
+            name="ExpirationDate"
+            id="ExpirationDate"
+            onChange={handleChange}
+            valid={NameOnCardState === "has-success"}
+            invalid={NameOnCardState === "has-danger"}
+          />
+          <FormFeedback>Incorrect Expiration Date</FormFeedback>
+        </FormGroup>
+        <Button color="primary">Submit</Button>
       </Form>
-      <Form className={styles.form} onSubmit={handleSubmit}></Form>
     </div>
   );
 }

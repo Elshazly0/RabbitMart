@@ -7,6 +7,7 @@ import Slider from "../components/Slider";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Card from "../components/Card";
+import Head from 'next/head';
 
 export default function Dashboard() {
   const router = useRouter();
@@ -44,7 +45,9 @@ export default function Dashboard() {
 
   return (
     <div className={styles.Homepage}>
-
+      <Head>
+        <title>MarketPlace - Farmers Market</title>
+      </Head>
       <hr style={{
         width: 1,
         color: "black",

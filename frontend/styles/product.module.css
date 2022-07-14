@@ -1,0 +1,81 @@
+.Homepage {
+  background-color: white;
+}
+.BuyCard {
+  display: flex;
+  margin-top: 7vh;
+  margin-left: 18vw;
+  width: 75vw;
+  height: 70vh;
+  background-color: rgb(251, 251, 251);
+  border-radius: 2rem;
+}
+.imageCard {
+  margin: 7rem;
+  height: 50vh;
+  border-radius: 4rem;
+  width: 30vw;
+}
+.Cardtitle {
+  margin-right: 3rem;
+}
+.CardInfo {
+  margin-top: 9vh;
+}
+.Quantity {
+  display: inline;
+  margin-top: 4rem;
+  margin-left: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  height: 4rem;
+  width: 4rem;
+  border: none;
+  box-shadow: 1px 1px 0px 2px rgba (0, 0, 0, 0.3);
+  background: var(--GreenColor);
+  cursor: pointer;
+}
+
+.Quantity:hover {
+  animation: mymove 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes mymove {
+  0% {
+  }
+  100% {
+    background-color: black;
+    color: wheat;
+    font-size: 1.8rem;
+  }
+}
+
+.Checkout {
+  display: block;
+  margin-top: 4rem;
+  margin-left: 30rem;
+  font-size: 1.8rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  height: 6rem;
+  width: 30rem;
+
+  border: none;
+  box-shadow: 1px 1px 0px 2px rgba (0, 0, 0, 0.3);
+  background: var(--GreenColor);
+  cursor: pointer;
+}
+
+.Checkout:hover {
+  animation: mymove 0.3s;
+  animation-fill-mode: forwards;
+}
+@keyframes mymove {
+  0% {
+  }
+  100% {
+    background-color: black;
+    color: wheat;
+    font-size: 2.5rem;
+  }
+}

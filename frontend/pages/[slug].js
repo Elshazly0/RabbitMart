@@ -1,21 +1,40 @@
-import Error from "next/error";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-
-import styles from "../styles/Home.module.css";
+import NavBar from "../components/NavBar";
+import styles from "../styles/product.module.css";
 import BuyCard from "../components/BuyCard";
-import BuyPart from "../components/BuyPart";
-import { FormFeedback, Input, Label } from "reactstrap";
-import { Button } from "reactstrap";
+import Head from 'next/head';
+
+
 
 function ProductPageContainer({ product }) {
   const [Quantity, setQuantity] = useState(0);
 
-  const BuyHandler = (event) => {
-    localStorage.setItem("product", JSON.stringify(product));
-    localStorage.setItem("quantity", Quantity);
 
-    window.location.replace("http://localhost:3000/payment");
+  const BuyHandler = (event) => {
+    if (Quantity != 0) {
+      localStorage.setItem("product", JSON.stringify(product));
+      localStorage.setItem("quantity", Quantity);
+
+      window.location.replace("http://localhost:3000/payment");
+    }
+
+  };
+
+  const Increment = () => {
+    if (product.stock > Quantity) {
+      setQuantity(Quantity + 1);
+
+    }
+
+
+  };
+  const Decrement = () => {
+    if (Quantity > 0) {
+      setQuantity(Quantity - 1);
+
+    }
+
   };
 
   const router = useRouter();
@@ -23,49 +42,52 @@ function ProductPageContainer({ product }) {
     return <div>Loading...</div>;
   }
 
-  return (
+  return <>
+    <Head>
+      <title>{product.name}</title>
+    </Head>
     <div className={styles.Homepage}>
-      <div className={styles.NavBar1}>
-        <h1 className={styles.hello}>Products.</h1>
-        <h1 className={styles.Hellotitle}>products</h1>
-      </div>
-      <div className={styles.BuyLayout}>
-        <BuyCard
-          image={product.image}
-          name={product.name}
-          price={product.price}
-        ></BuyCard>
-        <div className={styles.buyPart}>
-          <Input
-            style={{
-              width: "100%",
-              borderRadius: "20px",
-              height: "60px",
 
-              padding: "12px 20px",
-              margin: "8px 0",
-            }}
-            name="nameOnCard"
-            id="nameOnCard"
-            placeholder="quantity"
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-          <Button
-            style={{
-              width: "60%",
-              height: "45px",
-              backgroundColor: "#f5f5dc",
-              marginLeft: "100px"
+      <hr style={{
+        width: 1,
+        color: "black",
+        position: "absolute",
+        height: "99%",
+        marginLeft: "20rem",
+      }} />
+
+      <NavBar></NavBar>
 
 
-            }}
-            color="primary" size="sm" onClick={BuyHandler}>
-            Submit
-          </Button>{" "}
-        </div>
-      </div>
-    </div>
-  );
+      <BuyCard image={product.image}
+        name={product.name}
+        category={product.category}
+        weight={product.weight}
+        measurement={product.measurement}
+        price={product.price}
+        quantity={Quantity}
+        Increment={Increment}
+        Decrement={Decrement}
+        handleSubmit={BuyHandler}
+      >
+
+      </BuyCard>
+      {product.stock == 0 &&
+        <h2 style={{ marginLeft: "130rem", color: "green" }} >
+          This Item is out of Stock cheack back later
+        </h2>
+      }
+      {product.stock == Quantity && Quantity != 0 &&
+        <h2 style={{ marginLeft: "130rem", color: "green" }} >
+          Only {product.stock} items left in the Stock check back later for more
+        </h2>
+      }
+    </div >
+  </>
+
+
+
+
 }
 
 export async function getStaticProps({ params }) {

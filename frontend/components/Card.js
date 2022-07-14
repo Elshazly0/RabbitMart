@@ -16,7 +16,7 @@ export default function Card(props) {
           alt="..."
           style={{
             marginTop: "2rem",
-            maxHeight: "20vh", maxWidth: "17vw", borderRadius: "2em", display: "block",
+            maxHeight: "20vh", maxWidth: "13.5vw", borderRadius: "2em", display: "block",
             marginLeft: "auto",
             marginRight: "auto",
           }}
@@ -26,7 +26,7 @@ export default function Card(props) {
         <h3 className={styles.cardTitle}>{props.category}</h3>
         <h3 className={styles.cardTitle}>{props.weight}{props.measurment}</h3>
         <h2 className={styles.cardPrice}> price  <br />
-          {props.price} $<br /></h2>
+          EGP {props.price} <br /></h2>
       </div >
       <a href={`/${props.id}`}>
         <button className={styles.BuyButton}  >

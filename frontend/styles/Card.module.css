@@ -1,7 +1,7 @@
 .Card {
   margin-left: 0.4em;
   width: 25rem;
-  height: 34rem;
+  height: 38rem;
   margin-bottom: 5em;
   margin-left: 4.5em;
   border-style: solid;
@@ -11,7 +11,7 @@
 }
 
 .BuyButton {
-  margin-top: 5.5rem;
+  margin-top: 9rem;
   margin-left: 14rem;
   font-size: 1.5rem;
   font-weight: bold;
