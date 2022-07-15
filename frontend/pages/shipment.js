@@ -6,7 +6,7 @@ import axios from "axios";
 import NavBar from "../components/NavBar";
 
 
-export default function shipment() {
+export default function Shipment() {
 
 
     const [shipment, setShipment] = useState({});
