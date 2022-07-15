@@ -2,14 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import styles from "../styles/Shipment.module.css";
-import Image from 'next/image'
-import image from '../public/The-Blog-2.png'
-import Slider from '../components/Slider'
 import axios from "axios";
-import { useRouter } from "next/router";
-import Card from "../components/Card";
-import { Button } from "reactstrap";
-import { Slide } from 'react-slideshow-image';
 import NavBar from "../components/NavBar";
 
 
@@ -55,12 +48,9 @@ export default function shipment() {
                 className={styles.ShipImage}
             />
 
-
             <h2 className={styles.ShipText}> your shipment is {shipment.ShipmentStatus}</h2>
 
-
         </div>
-
 
     </div>
 
