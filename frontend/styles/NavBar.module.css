@@ -1,16 +1,17 @@
 .NavBar {
   color: black;
   display: flex;
-  height: 6em;
+  height: 6rem;
   width: 100%;
   border-radius: 1rem;
 }
 
 .logo {
-  margin-left: 2rem;
+  margin-left: 1vw;
+  margin-right: 2vw;
   color: var(--GreenColor);
   margin-top: 1.8rem;
-  font-size: 3rem;
+  font-size: 2vmax;
   font-weight: bold;
   text-decoration: none;
 }

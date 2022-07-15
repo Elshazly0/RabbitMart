@@ -132,13 +132,7 @@ export default function Register() {
   return (
     <div>
       <div className={styles.page}>
-        <hr style={{
-          width: 1,
-          color: "black",
-          position: "absolute",
-          height: "99%",
-          marginLeft: "20rem",
-        }} />
+
         <NavBar></NavBar>
         <div className={styles.App}>
           <h2 style={{ marginTop: "2rem", marginLeft: "1rem" }}>Procced Your Payment</h2>

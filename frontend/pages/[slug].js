@@ -48,16 +48,7 @@ function ProductPageContainer({ product }) {
     </Head>
     <div className={styles.Homepage}>
 
-      <hr style={{
-        width: 1,
-        color: "black",
-        position: "absolute",
-        height: "99%",
-        marginLeft: "20rem",
-      }} />
-
       <NavBar></NavBar>
-
 
       <BuyCard image={product.image}
         name={product.name}

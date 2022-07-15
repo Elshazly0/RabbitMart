@@ -9,13 +9,7 @@ export default function Home() {
   return (
     <div>
 
-      <hr style={{
-        color: "blue",
-        width: 1,
-        height: "75rem",
-        position: "absolute",
-        marginLeft: "20rem"
-      }} />
+
       <NavBar></NavBar>
 
       <div className={styles.card}> </div>

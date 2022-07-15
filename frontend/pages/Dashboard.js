@@ -49,13 +49,7 @@ export default function Dashboard() {
       <Head>
         <title>MarketPlace - Farmers Market</title>
       </Head>
-      <hr style={{
-        width: 1,
-        color: "black",
-        position: "absolute",
-        height: "99%",
-        marginLeft: "20rem",
-      }} />
+
       <NavBar></NavBar>
       <Filter handleCheckbox={handleCheckbox} setMin={event => { setMin(event.target.value) }} setMax={event => { setMax(event.target.value); }} ></Filter>
 
@@ -131,11 +125,9 @@ export default function Dashboard() {
               return (
                 <div>
                   {/* <br> */}
-                  key = {item}
 
                   <Card
                     key={item.id}
-
                     id={item.id}
                     img={item.image}
                     name={item.name}
@@ -151,7 +143,6 @@ export default function Dashboard() {
             return (
               <Card
                 key={item.id}
-
                 id={item.id}
                 img={item.image}
                 name={item.name}
