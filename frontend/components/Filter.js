@@ -11,7 +11,7 @@ export default function Filter(props) {
         <h1>Filter</h1>
 
         <hr style={{
-            width: "17rem",
+            width: "9.5vmax",
             color: "red",
             backgroundColor: "dimgray",
             height: 1,
@@ -26,7 +26,7 @@ export default function Filter(props) {
         </div>
 
         <hr style={{
-            width: "17rem",
+            width: "9.5vmax",
             color: "red",
             backgroundColor: "dimgray",
             height: 1,
@@ -55,7 +55,7 @@ export default function Filter(props) {
         </div>
 
         <hr style={{
-            width: "17rem",
+            width: "9.5vmax",
             color: "red",
             backgroundColor: "dimgray",
             height: 1,

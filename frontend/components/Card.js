@@ -16,7 +16,7 @@ export default function Card(props) {
           alt="..."
           style={{
             marginTop: "2rem",
-            maxHeight: "20vh", maxWidth: "13.5vw", borderRadius: "2em", display: "block",
+            maxHeight: "17rem", maxWidth: "19rem", borderRadius: "2em", display: "block",
             marginLeft: "auto",
             marginRight: "auto",
           }}
