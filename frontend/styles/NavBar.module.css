@@ -9,9 +9,14 @@
 .logo {
   margin-left: 2rem;
   color: var(--GreenColor);
-  margin-top: 2rem;
+  margin-top: 1.8rem;
   font-size: 3rem;
   font-weight: bold;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: var(--GreenColor);
 }
 
 .links {

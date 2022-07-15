@@ -1,7 +1,7 @@
 
 import React from "react";
 import { useState, useEffect } from "react";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Shipment.module.css";
 import Image from 'next/image'
 import image from '../public/The-Blog-2.png'
 import Slider from '../components/Slider'
@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import Card from "../components/Card";
 import { Button } from "reactstrap";
 import { Slide } from 'react-slideshow-image';
+import NavBar from "../components/NavBar";
+
 
 export default function shipment() {
 
@@ -33,6 +35,15 @@ export default function shipment() {
 
 
     return < div className={styles.Homepage}>
+
+        <hr style={{
+            width: 1,
+            color: "black",
+            position: "absolute",
+            height: "99%",
+            marginLeft: "20rem",
+        }} />
+        <NavBar></NavBar>
 
         <div className={styles.shipmentCard}>
 

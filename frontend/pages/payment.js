@@ -9,6 +9,7 @@ import {
 import { useState, useEffect } from "react";
 import styles from "../styles/payment.module.css";
 import axios from "axios";
+import NavBar from "../components/NavBar";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -129,74 +130,92 @@ export default function Register() {
   };
 
   return (
-    <div className={styles.App}>
-      <h2>Procced Your Payment</h2>
-      <Form className={styles.form} onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label className={styles.label} for="email">
-            Email Address
-          </Label>
+    <div>
+      <div className={styles.page}>
+        <hr style={{
+          width: 1,
+          color: "black",
+          position: "absolute",
+          height: "99%",
+          marginLeft: "20rem",
+        }} />
+        <NavBar></NavBar>
+        <div className={styles.App}>
+          <h2 style={{ marginTop: "2rem", marginLeft: "1rem" }}>Procced Your Payment</h2>
+          <Form className={styles.form} onSubmit={handleSubmit}>
+            <FormGroup>
+              <Label className={styles.label} for="email">
+                Email Address
+              </Label>
 
-          <Input
-            type="text"
-            name="email"
-            id="email"
-            placeholder="example@example.com"
-            onChange={handleChange}
-            valid={emailState === "has-success"}
-            invalid={emailState === "has-danger"}
-          />
-          <FormFeedback>Please input a correct email.</FormFeedback>
-        </FormGroup>
+              <Input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="example@example.com"
+                onChange={handleChange}
+                valid={emailState === "has-success"}
+                invalid={emailState === "has-danger"}
+              />
+              <FormFeedback>Please input a correct email.</FormFeedback>
+            </FormGroup>
 
-        <FormGroup>
-          <Label className={styles.label} for="NameOnCard">
-            Name On Card
-          </Label>
-          <Input
-            type="text"
-            name="NameOnCard"
-            id="NameOnCard"
-            placeholder="********"
-            onChange={handleChange}
-            valid={NameOnCardState === "has-success"}
-            invalid={NameOnCardState === "has-danger"}
-          />
-          <FormFeedback>Please Enter A Real Name</FormFeedback>
-        </FormGroup>
-        <FormGroup>
-          <Label className={styles.label} for="CardNumber">
-            Card Number
-          </Label>
-          <Input
-            type="CardNumber"
-            name="CardNumber"
-            id="CardNumber"
-            placeholder="1234-5678-****-****"
-            onChange={handleChange}
-            valid={CardNumberState === "has-success"}
-            invalid={CardNumberState === "has-danger"}
-          />
-          <FormFeedback>
-            CardNumber must be 16 characters long.
-          </FormFeedback>
-        </FormGroup>
-        <FormGroup>
-          <Label className={styles.label} for="ExpirationDate">
-            ExpirationDate
-          </Label>
-          <Input
-            type="date"
-            name="ExpirationDate"
-            id="ExpirationDate"
-            onChange={handleChange}
-            valid={NameOnCardState === "has-success"}
-            invalid={NameOnCardState === "has-danger"}
-          />
-          <FormFeedback>Incorrect Expiration Date</FormFeedback>
-        </FormGroup>
-        <Button color="primary">Submit</Button>
-      </Form>
+            <FormGroup>
+              <Label className={styles.label} for="NameOnCard">
+                Name On Card
+              </Label>
+              <Input
+                type="text"
+                name="NameOnCard"
+                id="NameOnCard"
+                placeholder="********"
+                onChange={handleChange}
+                valid={NameOnCardState === "has-success"}
+                invalid={NameOnCardState === "has-danger"}
+              />
+              <FormFeedback>Please Enter A Real Name</FormFeedback>
+            </FormGroup>
+            <FormGroup>
+              <Label className={styles.label} for="CardNumber">
+                Card Number
+              </Label>
+              <Input
+                type="CardNumber"
+                name="CardNumber"
+                id="CardNumber"
+                placeholder="1234-5678-****-****"
+                onChange={handleChange}
+                valid={CardNumberState === "has-success"}
+                invalid={CardNumberState === "has-danger"}
+              />
+              <FormFeedback>
+                CardNumber must be 16 characters long.
+              </FormFeedback>
+            </FormGroup>
+            <FormGroup>
+              <Label className={styles.label} for="ExpirationDate">
+                ExpirationDate
+              </Label>
+              <Input
+                type="date"
+                name="ExpirationDate"
+                id="ExpirationDate"
+                onChange={handleChange}
+                valid={NameOnCardState === "has-success"}
+                invalid={NameOnCardState === "has-danger"}
+              />
+              <FormFeedback>Incorrect Expiration Date</FormFeedback>
+            </FormGroup>
+            <div style={{ marginTop: "5rem" }}></div>
+            <Button color="success">Submit</Button>
+          </Form>
+        </div>
+      </div>
+      <div className={styles.page}>
+
+      </div>
     </div>
+
+
   );
 }

@@ -18,12 +18,13 @@ export default function Dashboard() {
   const [Meat, setMeat] = useState(false)
   const [min, setMin] = useState("");
   const [max, setMax] = useState("")
-
+  const [spinner, setSpinner] = useState(true)
 
 
   useEffect(() => {
     axios.get("http://localhost:3004/products").then((response) => {
       const data = response.data;
+      setSpinner(false)
       setProducts(data)
     });
   }, []);
@@ -73,6 +74,8 @@ export default function Dashboard() {
       <div className={styles.card}>
         <Slider></Slider>
 
+
+        {spinner && <div className={styles.loader}></div>}
         <div className={styles.category}>
 
 
